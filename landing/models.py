@@ -11,9 +11,10 @@ class Usuario(models.Model):
 class Aluno(models.Model):
     nome = models.CharField(max_length=255, verbose_name='Nome')
     frase = models.TextField()
+    Usuario = models.OneToOneField(Usuario, on_delete=models.CASCADE, null=True)
     
     criado_em =  models.DateTimeField(default=timezone.now)
     ativo = models.BooleanField(default=True)
 
     def __str__(self):
-        return self.nome
+        return self.nome 
